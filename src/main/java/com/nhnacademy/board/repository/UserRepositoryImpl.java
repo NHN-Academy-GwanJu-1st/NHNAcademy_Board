@@ -39,4 +39,25 @@ public class UserRepositoryImpl implements UserRepository {
     public Map<String, UserDTO> findAll() {
         return userMap;
     }
+
+    @Override
+    public boolean deleteUser(String name) {
+
+        boolean deleteCheck = false;
+
+        for (String key : userMap.keySet()) {
+            if (userMap.get(key).getName().equals(name)) {
+                userMap.remove(key);
+                deleteCheck = true;
+                break;
+            }
+        }
+
+        return deleteCheck;
+    }
+
+    @Override
+    public void modifyUser(UserDTO user) {
+        userMap.put(user.getId(), user);
+    }
 }

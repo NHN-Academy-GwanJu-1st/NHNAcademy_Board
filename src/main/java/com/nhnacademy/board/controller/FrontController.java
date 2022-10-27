@@ -67,26 +67,18 @@ public class FrontController extends HttpServlet {
             command = new UserRegisterFormController();
         } else if ("/userRegister.do".equals(servletPath)) {
             command = new UserRegisterController();
+        } else if ("/admin.do".equals(servletPath)) {
+            command = new AdminInitController();
         } else if ("/admin/view.do".equals(servletPath)) {
             command = new AdminUserViewController();
+        } else if ("/admin/delete.do".equals(servletPath)) {
+            command = new AdminUserDeleteController();
+        } else if ("/admin/modifyForm.do".equals(servletPath)) {
+            command = new AdminModifyFormController();
+        } else if ("/admin/modify.do".equals(servletPath)) {
+            command = new AdminUserModifyController();
         }
-//        } else if ("/logout.do".equals(servletPath)) {
-//            command = new LogoutController();
-//        } else if ("/init.do".equals(servletPath)) {
-//            command = new InitController();
-//        } else if ("/foods.do".equals(servletPath)) {
-//            command = new FoodsController();
-//        } else if ("/cartList.do".equals(servletPath)) {
-//            command = new CartListController();
-//        } else if ("/cart.do".equals(servletPath)) {
-//            command = new CartController();
-//        } else if ("/local.do".equals(servletPath)) {
-//            command = new LocalController();
-//        } else if ("/pay.do".equals(servletPath)) {
-//            command = new PayController();
-//        }
 
-//        return processingServletPath;
         return command;
     }
 

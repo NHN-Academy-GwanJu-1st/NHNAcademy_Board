@@ -12,8 +12,15 @@
 <br>
 <br>
 
-<c:out value="${user}"></c:out>
+<div style="display: flex; align-items: center">
+<img src="asdf" width="40px">
+<p><c:out value="${user.getName()}"></c:out></p>
+</div>
+<br>
+<br>
 
+<a href="/admin/modify.do?name="${user.getName()}>update</a>
+<a href="/admin/delete.do?name="${user.getName()}>delete</a>
 
 </body>
 </html>

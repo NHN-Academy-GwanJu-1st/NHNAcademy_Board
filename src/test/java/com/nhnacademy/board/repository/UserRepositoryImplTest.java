@@ -15,6 +15,9 @@ public class UserRepositoryImplTest extends TestCase {
     }
 
     public void testFindUser() {
+
+        String test = "name=test";
+        System.out.println(test.split("=")[1]);
     }
 
     @Test
@@ -34,10 +37,53 @@ public class UserRepositoryImplTest extends TestCase {
             }
         }
 
+        System.out.println(findUser);
         Assert.assertNotNull(findUser);
 
     }
 
     public void testFindAll() {
+    }
+
+    @Test
+    public void testDeleteUser() {
+
+        String findName = "testName";
+
+        userRepository.addUser(testUser);
+        Map<String, UserDTO> all = userRepository.findAll();
+
+        boolean deleteCheck = false;
+
+        for (String key : all.keySet()) {
+            if (all.get(key).getName().equals(findName)) {
+                all.remove(key);
+                deleteCheck = true;
+                break;
+            }
+        }
+        Assert.assertTrue(deleteCheck);
+    }
+
+    @Test
+    public void testModifyUser() {
+
+        userRepository.addUser(testUser);
+
+        boolean modifyCheck = false;
+
+        String id = "test";
+        UserDTO test = new UserDTO("test", "asdf", "asdf", "asdf");
+
+        Map<String, UserDTO> all = userRepository.findAll();
+
+        for (String key : all.keySet()) {
+            if (key.equals(id)) {
+                all.put(key, test);
+                modifyCheck = true;
+                break;
+            }
+        }
+        Assert.assertTrue(modifyCheck);
     }
 }

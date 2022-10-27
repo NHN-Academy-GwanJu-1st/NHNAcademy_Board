@@ -14,4 +14,8 @@ public interface UserRepository {
 
     public Map<String, UserDTO> findAll();
 
+    public boolean deleteUser(String name);
+
+    public void modifyUser(UserDTO user);
+
 }
