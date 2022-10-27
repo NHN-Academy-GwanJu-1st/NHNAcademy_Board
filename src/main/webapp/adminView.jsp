@@ -19,8 +19,8 @@
 <br>
 <br>
 
-<a href="/admin/modify.do?name="${user.getName()}>update</a>
-<a href="/admin/delete.do?name="${user.getName()}>delete</a>
+<a href="/admin/modifyForm.do?name=${user.getName()}">update</a>
+<a href="/admin/delete.do?name=${user.getName()}">delete</a>
 
 </body>
 </html>

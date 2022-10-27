@@ -2,10 +2,12 @@ package com.nhnacademy.board.controller;
 
 import com.nhnacademy.board.domain.UserDTO;
 import com.nhnacademy.board.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@Slf4j
 public class AdminModifyFormController implements Command {
     @Override
     public String excute(HttpServletRequest req, HttpServletResponse res) {
@@ -18,6 +20,6 @@ public class AdminModifyFormController implements Command {
 
         req.setAttribute("user", user);
 
-        return "/admin/modify.jsp";
+        return "/adminModify.jsp";
     }
 }
