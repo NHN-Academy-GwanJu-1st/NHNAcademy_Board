@@ -20,6 +20,8 @@ public class FrontController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.info("FrontController service()");
+
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html");
@@ -65,6 +67,8 @@ public class FrontController extends HttpServlet {
             command = new UserRegisterFormController();
         } else if ("/userRegister.do".equals(servletPath)) {
             command = new UserRegisterController();
+        } else if ("/admin/view.do".equals(servletPath)) {
+            command = new AdminUserViewController();
         }
 //        } else if ("/logout.do".equals(servletPath)) {
 //            command = new LogoutController();
