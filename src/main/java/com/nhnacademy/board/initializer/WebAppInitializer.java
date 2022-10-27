@@ -16,8 +16,11 @@ public class WebAppInitializer implements ServletContainerInitializer {
 
     @Override
     public void onStartup(Set<Class<?>> set, ServletContext servletContext) throws ServletException {
-        /* Admin ID and Password*/
-        servletContext.setInitParameter("id", "admin");
-        servletContext.setInitParameter("password", "12345");
+        /* Admin ID and Password */
+        servletContext.setInitParameter("adminId", "admin");
+        servletContext.setInitParameter("adminPassword", "12345");
+        /* Test ID and Password */
+        servletContext.setInitParameter("id", "test");
+        servletContext.setInitParameter("password", "123");
     }
 }
