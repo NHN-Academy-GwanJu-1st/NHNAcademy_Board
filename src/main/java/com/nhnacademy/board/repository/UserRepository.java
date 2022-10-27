@@ -6,6 +6,6 @@ public interface UserRepository {
 
     public void addUser(UserDTO user);
 
-    public UserDTO getUser(String id);
+    public UserDTO findUser(String id);
 
 }

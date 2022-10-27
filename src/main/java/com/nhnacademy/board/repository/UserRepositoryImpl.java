@@ -16,7 +16,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public UserDTO getUser(String id) {
+    public UserDTO findUser(String id) {
         return userMap.get(id);
     }
 }

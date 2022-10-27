@@ -19,8 +19,5 @@ public class WebAppInitializer implements ServletContainerInitializer {
         /* Admin ID and Password */
         servletContext.setInitParameter("adminId", "admin");
         servletContext.setInitParameter("adminPassword", "12345");
-        /* Test ID and Password */
-        servletContext.setInitParameter("id", "test");
-        servletContext.setInitParameter("password", "123");
     }
 }

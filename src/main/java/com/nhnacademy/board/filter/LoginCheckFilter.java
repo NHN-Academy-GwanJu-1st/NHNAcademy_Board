@@ -20,7 +20,9 @@ import java.util.stream.Collectors;
         @WebInitParam(name = "exclude-urls",
                 value = "/\n"+
                         "/loginForm.jsp\n" +
-                        "/login\n")
+                        "/login\n" +
+                        "/userRegister.jsp"
+        )
 })
 public class LoginCheckFilter implements Filter {
 
@@ -43,7 +45,15 @@ public class LoginCheckFilter implements Filter {
 
         HttpSession session = ((HttpServletRequest) request).getSession(false);
 
-        if (Objects.isNull(session)) {
+        boolean loginCheck = false;
+
+        if (Objects.nonNull(session)) {
+            if (session.getAttribute("id") != null) {
+                loginCheck = true;
+            }
+        }
+
+        if (Objects.isNull(session) && loginCheck) {
             // 세션 null
             if (excludeUrls.contains(((HttpServletRequest) request).getRequestURI())) {
                 chain.doFilter(request, response);

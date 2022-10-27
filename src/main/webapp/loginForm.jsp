@@ -24,6 +24,10 @@
     <br>
 
     <button type="submit">Login</button>
+
+    <br>
+
+    <a href="userRegisterForm.do">UserRegister</a>
 </form>
 
 <br>

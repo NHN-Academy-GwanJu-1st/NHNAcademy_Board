@@ -61,6 +61,10 @@ public class FrontController extends HttpServlet {
             command = new LoginFormController();
         } else if ("/login.do".equals(servletPath)) {
             command = new LoginController();
+        } else if ("/userRegisterForm.do".equals(servletPath)) {
+            command = new UserRegisterFormController();
+        } else if ("/userRegister.do".equals(servletPath)) {
+            command = new UserRegisterController();
         }
 //        } else if ("/logout.do".equals(servletPath)) {
 //            command = new LogoutController();
