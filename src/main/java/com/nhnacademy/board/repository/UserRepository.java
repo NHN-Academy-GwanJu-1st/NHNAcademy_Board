@@ -10,6 +10,8 @@ public interface UserRepository {
 
     public UserDTO findUser(String id);
 
+    public UserDTO findUserByName(String name);
+
     public Map<String, UserDTO> findAll();
 
 }

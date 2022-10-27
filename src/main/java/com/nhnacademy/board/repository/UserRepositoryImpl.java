@@ -20,8 +20,19 @@ public class UserRepositoryImpl implements UserRepository {
         return userMap.get(id);
     }
 
-    public void findUserByName() {
-        
+    @Override
+    public UserDTO findUserByName(String name) {
+
+        UserDTO findUser = null;
+
+        for (String key : userMap.keySet()) {
+            if (userMap.get(key).getName().equals(name)) {
+                findUser = userMap.get(key);
+                break;
+            }
+        }
+
+        return findUser;
     }
 
     @Override
