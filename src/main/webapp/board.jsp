@@ -13,6 +13,10 @@
 <a href="/logout.do">Logout</a>
 <br>
 
+<p>Visit Count: ${visitCount}</p>
+<br>
+
+
 <h2>Board List</h2>
 <br>
 

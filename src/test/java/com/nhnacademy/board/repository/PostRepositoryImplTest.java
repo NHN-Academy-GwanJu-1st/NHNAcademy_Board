@@ -21,17 +21,17 @@ public class PostRepositoryImplTest {
         Assert.assertEquals(boardId, 1);
     }
 
-    @Test
-    public void findBoard() {
-
-        long boardId = postRepository.registerBoard(board);
-
-        long findBoardId = 1;
-
-        BoardDTO findBoard = postRepository.findBoard(findBoardId);
-
-        Assert.assertEquals(findBoard, board);
-    }
+//    @Test
+//    public void findBoard() {
+//
+//        long boardId = postRepository.registerBoard(board);
+//
+//        long findBoardId = 1;
+//
+//        BoardDTO findBoard = postRepository.findBoard(findBoardId);
+//
+//        Assert.assertEquals(findBoard, board);
+//    }
 
     @Test
     public void findAll() {

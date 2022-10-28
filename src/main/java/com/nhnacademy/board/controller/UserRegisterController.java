@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UserRegisterController implements Command {
-    /*POST*/
+
+    private static String IMAGE_DIR = System.getProperty("user.dir");
     @Override
     public String excute(HttpServletRequest req, HttpServletResponse res) {
 

@@ -12,7 +12,7 @@
 <br>
 
 <form method="post" action="/admin/modify.do">
-    ID : <input type="text" name="id" value="${user.getId()}" disabled></br>
+    ID : <input type="text" name="id" value="${user.getId()}" readonly></br>
     PW : <input type="text" name="password" value="${user.getPassword()}"></br>
     Name : <input type="text" name="name" value="${user.getName()}"></br>
     Profile : <input type="text" name="profile" value="${user.getProfile()}"></br>

@@ -19,12 +19,12 @@ public class WebAppListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         log.info("WebAppListener");
 
+        ServletContext servletContext = sce.getServletContext();
+
         /* UserRepository */
         UserRepository userRepository = new UserRepositoryImpl();
         /* Admin */
         userRepository.addUser(new UserDTO("admin", "12345", "관리자", ""));
-
-        ServletContext servletContext = sce.getServletContext();
         servletContext.setAttribute("userRepository", userRepository);
 
         /* BoardRepository */
