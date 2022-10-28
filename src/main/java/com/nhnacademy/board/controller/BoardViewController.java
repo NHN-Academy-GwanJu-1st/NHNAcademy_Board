@@ -20,14 +20,9 @@ public class BoardViewController implements Command {
         BoardDTO board = postRepository.findBoard(boardId);
         UserDTO writer = userRepository.findUser(board.getUserId());
 
-        /* 게시판 조회수 증가 */
-        board.setViewCount(board.getViewCount() + 1);
-
         req.setAttribute("board", board);
         req.setAttribute("writer", writer);
 
-
         return "/boardView.jsp";
-
     }
 }
