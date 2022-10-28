@@ -41,16 +41,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean deleteUser(String name) {
+    public boolean deleteUser(String id) {
 
         boolean deleteCheck = false;
 
-        for (String key : userMap.keySet()) {
-            if (userMap.get(key).getName().equals(name)) {
-                userMap.remove(key);
-                deleteCheck = true;
-                break;
-            }
+        if (userMap.containsKey(id)) {
+            userMap.remove(id);
+            deleteCheck = true;
         }
 
         return deleteCheck;

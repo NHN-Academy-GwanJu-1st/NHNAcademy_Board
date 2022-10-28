@@ -21,7 +21,7 @@
 <c:forEach var="i" items="${userMap}">
     <c:if test="${i.key != 'admin'}">
     <li>
-        <a href="/admin/view.do?name=${i.value.getName()}">${i.value.getName()}</a>
+        <a href="/admin/view.do?id=${i.value.getId()}">${i.value.getName()}</a>
     </li>
     </c:if>
 </c:forEach>

@@ -19,7 +19,7 @@ public class AdminUserViewController implements Command {
 
         UserRepository userRepository = (UserRepository) req.getServletContext().getAttribute("userRepository");
 
-        UserDTO findUser = userRepository.findUserByName(queryString);
+        UserDTO findUser = userRepository.findUser(queryString);
 
         if (Objects.isNull(findUser)) {
             return "redirect:/admin.do";

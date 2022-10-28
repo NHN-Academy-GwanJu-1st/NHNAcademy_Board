@@ -48,20 +48,19 @@ public class UserRepositoryImplTest extends TestCase {
     @Test
     public void testDeleteUser() {
 
-        String findName = "testName";
+        String findId = "test";
 
         userRepository.addUser(testUser);
         Map<String, UserDTO> all = userRepository.findAll();
 
         boolean deleteCheck = false;
 
-        for (String key : all.keySet()) {
-            if (all.get(key).getName().equals(findName)) {
-                all.remove(key);
-                deleteCheck = true;
-                break;
-            }
+        if (all.containsKey(findId)) {
+            all.remove(findId);
+            deleteCheck = true;
         }
+
+
         Assert.assertTrue(deleteCheck);
     }
 

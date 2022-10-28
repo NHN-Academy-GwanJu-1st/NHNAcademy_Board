@@ -22,7 +22,7 @@ public class UserRegisterFormController implements Command {
         if (!loginCheck) {
             return "/userRegister.jsp";
         } else {
-            return "/user.jsp";
+            return "/board.jsp";
         }
     }
 }

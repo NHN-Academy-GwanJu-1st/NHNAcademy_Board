@@ -77,6 +77,8 @@ public class FrontController extends HttpServlet {
             command = new AdminModifyFormController();
         } else if ("/admin/modify.do".equals(servletPath)) {
             command = new AdminUserModifyController();
+        } else if ("/board.do".equals(servletPath)) {
+            command = new BoardInitController();
         }
 
         return command;

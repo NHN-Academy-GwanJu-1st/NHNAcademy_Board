@@ -14,13 +14,7 @@ public class UserDTO {
     public UserDTO(String id, String password, String name, String profile) {
         this.id = id;
         this.password = password;
-
-        if (id.equals("admin")) {
-            this.name = "관리자";
-        } else {
-            this.name = name;
-
-        }
+        this.name = name;
         this.profile = profile;
     }
 }

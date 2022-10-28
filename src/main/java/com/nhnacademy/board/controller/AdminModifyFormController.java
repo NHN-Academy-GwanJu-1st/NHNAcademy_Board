@@ -16,7 +16,7 @@ public class AdminModifyFormController implements Command {
 
         UserRepository userRepository = (UserRepository) req.getServletContext().getAttribute("userRepository");
 
-        UserDTO user = userRepository.findUserByName(queryString);
+        UserDTO user = userRepository.findUser(queryString);
 
         req.setAttribute("user", user);
 

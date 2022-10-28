@@ -37,7 +37,7 @@ public class LoginController implements Command {
                 session.setAttribute("id", user);
                 userRepository.addUser(user);
 
-                return "redirect:/user.jsp";
+                return "redirect:/board.do";
             }
 
         } else {
