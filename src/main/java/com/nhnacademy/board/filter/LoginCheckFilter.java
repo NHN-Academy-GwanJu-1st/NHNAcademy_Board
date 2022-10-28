@@ -53,7 +53,7 @@ public class LoginCheckFilter implements Filter {
             }
         }
 
-        if (Objects.isNull(session) && loginCheck) {
+        if (Objects.isNull(session) && !loginCheck) {
             // 세션 null
             if (excludeUrls.contains(((HttpServletRequest) request).getRequestURI())) {
                 chain.doFilter(request, response);
