@@ -12,7 +12,7 @@ public interface PostRepository {
 
     public Map<Long, BoardDTO> findAll();
 
-    public void modifyBoard(BoardDTO board);
+    public void modifyBoard(long boardId, String title, String content);
 
     public boolean removeBoard(long boardId);
 

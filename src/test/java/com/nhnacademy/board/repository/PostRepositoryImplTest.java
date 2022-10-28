@@ -11,10 +11,10 @@ import static org.junit.Assert.*;
 public class PostRepositoryImplTest {
 
     PostRepository postRepository = new PostRepositoryImpl();
+    BoardDTO board = new BoardDTO("testTitle", "testContent", "testUser");
 
     @Test
     public void boardRegister() {
-        BoardDTO board = new BoardDTO("testTitle", "testContent", "testUser");
 
         long boardId = postRepository.registerBoard(board);
 
@@ -23,8 +23,6 @@ public class PostRepositoryImplTest {
 
     @Test
     public void findBoard() {
-
-        BoardDTO board = new BoardDTO("testTitle", "testContent", "testUser");
 
         long boardId = postRepository.registerBoard(board);
 
@@ -49,23 +47,22 @@ public class PostRepositoryImplTest {
 
     @Test
     public void modifyBoard() {
-//        BoardDTO board = new BoardDTO("testTitle", "testContent", "testUser");
-//
-//        postRepository.boardRegister(board);
-//        BoardDTO beforeBoard = postRepository.findBoard(board.getId());
-//
-//        BoardDTO modify = new BoardDTO("modifyTitle", "modifyContent", "testUser");
-//        postRepository.modifyBoard(modify);
-//
-//        BoardDTO modifyBoard = postRepository.findBoard(board.getId());
-//
-//        Assert.assertEquals(modifyBoard.getContent(), modify.getContent());
+        String modifyTitle = "modifyTitle";
+        String modifyContent = "modifyTitle";
+
+        postRepository.registerBoard(board);
+        BoardDTO findBoard = postRepository.findBoard(board.getId());
+        findBoard.setTitle(modifyTitle);
+        findBoard.setContent(modifyContent);
+
+
+        Assert.assertEquals(findBoard.getTitle(), modifyTitle);
+        Assert.assertEquals(findBoard.getContent(), modifyContent);
+
     }
 
     @Test
     public void removeBoard() {
-        BoardDTO board = new BoardDTO("testTitle", "testContent", "testUser");
-
         postRepository.registerBoard(board);
 
         boolean result = postRepository.removeBoard(board.getId());

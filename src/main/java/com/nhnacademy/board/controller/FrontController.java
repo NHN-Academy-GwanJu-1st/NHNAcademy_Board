@@ -85,6 +85,16 @@ public class FrontController extends HttpServlet {
             command = new BoardRegisterFormController();
         } else if ("/board/register.do".equals(servletPath)) {
             command = new BoardRegisterController();
+        } else if ("/board/view.do".equals(servletPath)) {
+            command = new BoardViewController();
+        } else if ("/board/modifyForm.do".equals(servletPath)) {
+            command = new BoardModifyFormController();
+        } else if ("/board/modify.do".equals(servletPath)) {
+            command = new BoardModifyController();
+        } else if ("/board/delete.do".equals(servletPath)) {
+            command = new BoardDeleteController();
+        } else if ("/user/view.do".equals(servletPath)) {
+            command = new UserViewController();
         }
 
         return command;

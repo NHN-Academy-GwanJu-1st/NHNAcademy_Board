@@ -28,10 +28,11 @@ public class PostRepositoryImpl implements PostRepository {
     }
 
     @Override
-    public void modifyBoard(BoardDTO board) {
-        /* TODO 나중에 구현 */
-        board.setId(board.getId() - 1);
-        boardMap.put(board.getId(), board);
+    public void modifyBoard(long boardId, String title, String content) {
+        BoardDTO board = findBoard(boardId);
+        board.setTitle(title);
+        board.setContent(content);
+
     }
 
     @Override

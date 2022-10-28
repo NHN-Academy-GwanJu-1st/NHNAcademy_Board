@@ -13,8 +13,8 @@
 <br>
 
 <div style="display: flex; align-items: center">
-<img src="asdf" width="40px">
-<p><c:out value="${user.getName()}"></c:out></p>
+<img src="${user.getProfile()}" style="width: 80px; margin-right: 20px">
+<p>${user.getName()}</p>
 </div>
 <br>
 <br>

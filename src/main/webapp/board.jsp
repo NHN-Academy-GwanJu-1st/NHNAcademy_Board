@@ -21,7 +21,8 @@
         <tr>
             <td style="width: 150px">No</td>
             <td>Title</td>
-            <td style="width: 300px">Date</td>
+            <td style="width: 200px">Date</td>
+            <td style="width: 100px">ViewCount</td>
         </tr>
     </thead>
 
@@ -33,6 +34,7 @@
                     <a href="/board/view.do?id=${i.value.getId()}">${i.value.getTitle()}</a>
                 </td>
                 <td><fmt:formatDate value="${i.value.getDate()}" pattern="yyyy-MM-dd HH:ss"/></td>
+                <td>${i.value.getViewCount()}</td>
             </tr>
         </c:forEach>
     </tbody>
