@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+@MultipartConfig(
+        location = "C:\\Temp\\images",
+        maxFileSize = -1L,
+        maxRequestSize = -1L,
+        fileSizeThreshold = 1024
+)
 @Slf4j
 @WebServlet(name = "frontController", urlPatterns = "*.do")
 public class FrontController extends HttpServlet {
@@ -92,6 +99,8 @@ public class FrontController extends HttpServlet {
             command = new UserViewController();
         } else if ("/locale.do".equals(servletPath)) {
             command = new LocaleController();
+        } else if ("/images.do".equals(servletPath)) {
+            command = new ImageController();
         }
 
         return command;

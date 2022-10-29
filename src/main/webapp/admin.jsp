@@ -17,6 +17,8 @@
 
 
 <br>
+<a href="/logout.do"><fmt:message key="Logout"/></a>
+<br>
 <br>
 
     <a href="userRegisterForm.do"><fmt:message key="UserRegister"/></a>

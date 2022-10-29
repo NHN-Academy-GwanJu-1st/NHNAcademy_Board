@@ -18,7 +18,7 @@
 <br>
 
 <div style="display: flex; align-items: center">
-    <img src="${user.getProfile()}" alt="img" style="width: 80px; margin-right: 20px">
+    <img src="<c:out value='${pageContext.request.contextPath}/images.do?profile=${user.getProfile()}'/>" style="width: 80px; margin-right: 20px">
     <p>${user.getName()}</p>
 </div>
 </fmt:bundle>

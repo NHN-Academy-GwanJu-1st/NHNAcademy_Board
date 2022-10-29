@@ -17,11 +17,14 @@
 <br>
 <br>
 
-<form method="post" action="/userRegister.do">
+<form method="post" action="/userRegister.do" enctype="multipart/form-data">
     <fmt:message key="ID"/> : <input type="text" name="id"></br>
     <fmt:message key="PW"/> : <input type="text" name="password"></br>
     <fmt:message key="Name"/> : <input type="text" name="name"></br>
-    <fmt:message key="Profile"/> : <input type="text" name="profile"></br>
+<%--    <fmt:message key="Profile"/> : <input type="text" name="profile"></br>--%>
+
+    <fmt:message key="Profile"/> : <input type="file" name="profile"></br>
+
 
     <br>
     <br>

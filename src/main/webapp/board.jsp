@@ -21,6 +21,7 @@
 
 <p><fmt:message key="Visit.Count"/>: ${visitCount}</p>
 <br>
+<p>로그인 한 사용자 수: ${sessionScope.size()}</p>
 
 
 <h2><fmt:message key="Board.List"/></h2>

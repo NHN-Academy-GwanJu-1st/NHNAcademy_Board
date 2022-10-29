@@ -22,7 +22,9 @@ import java.util.stream.Collectors;
                         "/loginForm.jsp\n" +
                         "/login\n" +
                         "/userRegister.jsp\n" +
-                        "/error.jsp"
+                        "/error.jsp\n" +
+                        "images.do\n" +
+                        "/images.do"
         )
 })
 public class LoginCheckFilter implements Filter {

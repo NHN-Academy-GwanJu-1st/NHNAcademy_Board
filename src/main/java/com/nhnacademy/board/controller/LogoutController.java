@@ -15,6 +15,10 @@ public class LogoutController implements Command{
             session.invalidate();
         }
 
+        if (session != null && session.getAttribute("admin") != null) {
+            session.invalidate();
+        }
+
         return "redirect:/loginForm.do";
     }
 }
