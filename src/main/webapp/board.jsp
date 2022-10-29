@@ -7,26 +7,32 @@
 </head>
 <body>
 
-<h1>Board Page</h1>
-<br>
-<br>
-<a href="/logout.do">Logout</a>
-<br>
-
-<p>Visit Count: ${visitCount}</p>
-<br>
+<%@ include file="localeInclude.jsp"%>
 
 
-<h2>Board List</h2>
+<fmt:bundle basename="message">
+
+
+<h1><fmt:message key="Board.Page"/></h1>
+<br>
+<br>
+<a href="/logout.do"><fmt:message key="Logout"/></a>
+<br>
+
+<p><fmt:message key="Visit.Count"/>: ${visitCount}</p>
+<br>
+
+
+<h2><fmt:message key="Board.List"/></h2>
 <br>
 
 <table border="1" style="border-collapse: collapse; text-align: center; width: 1000px">
     <thead>
         <tr>
-            <td style="width: 150px">No</td>
-            <td>Title</td>
-            <td style="width: 200px">Date</td>
-            <td style="width: 100px">ViewCount</td>
+            <td style="width: 150px"><fmt:message key="No"/></td>
+            <td><fmt:message key="Title"/></td>
+            <td style="width: 200px"><fmt:message key="Date"/></td>
+            <td style="width: 100px"><fmt:message key="ViewCount"/></td>
         </tr>
     </thead>
 
@@ -47,7 +53,8 @@
 <br>
 <br>
 
-<a href="/board/registerForm.do?id=${sessionScope.id.getId()}">Go Board Register</a>
+<a href="/board/registerForm.do?id=${sessionScope.id.getId()}"><fmt:message key="Go.Board.Register"/></a>
 
+</fmt:bundle>
 </body>
 </html>

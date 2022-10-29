@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -6,7 +7,12 @@
 </head>
 <body>
 
-<h1>Admin User View Page</h1>
+<%@ include file="localeInclude.jsp"%>
+
+
+<fmt:bundle basename="message">
+
+<h1><fmt:message key="Admin.User.View.Page"/></h1>
 
 <br>
 <br>
@@ -19,8 +25,9 @@
 <br>
 <br>
 
-<a href="/admin/modifyForm.do?id=${user.getId()}">update</a>
-<a href="/admin/delete.do?id=${user.getId()}">delete</a>
+<a href="/admin/modifyForm.do?id=${user.getId()}"><fmt:message key="Modify"/></a>
+<a href="/admin/delete.do?id=${user.getId()}"><fmt:message key="Delete"/></a>
 
+</fmt:bundle>
 </body>
 </html>

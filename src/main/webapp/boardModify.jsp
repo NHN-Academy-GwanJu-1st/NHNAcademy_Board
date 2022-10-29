@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -5,7 +6,12 @@
 </head>
 <body>
 
-<h1>Board ModifyForm Page</h1>
+<%@ include file="localeInclude.jsp"%>
+
+<fmt:bundle basename="message">
+
+
+<h1><fmt:message key="Board.ModifyForm.Page"/></h1>
 
 <br>
 <br>
@@ -26,9 +32,9 @@
     <br>
     <br>
 
-    <button type="submit">Modify</button>
+    <button type="submit"><fmt:message key="Modify"/></button>
 
 </form>
-
+</fmt:bundle>
 </body>
 </html>

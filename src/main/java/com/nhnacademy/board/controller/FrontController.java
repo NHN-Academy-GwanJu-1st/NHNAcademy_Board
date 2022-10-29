@@ -26,13 +26,8 @@ public class FrontController extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html");
 
-        /* session locale check */
-        if (req.getParameter("locale") != null) {
-            locale = req.getParameter("locale");
-        }
 
-        HttpSession session = req.getSession();
-        session.setAttribute("locale", locale);
+
 
         try {
             // 실제 처리 요청 servlet
@@ -95,6 +90,8 @@ public class FrontController extends HttpServlet {
             command = new BoardDeleteController();
         } else if ("/user/view.do".equals(servletPath)) {
             command = new UserViewController();
+        } else if ("/locale.do".equals(servletPath)) {
+            command = new LocaleController();
         }
 
         return command;
