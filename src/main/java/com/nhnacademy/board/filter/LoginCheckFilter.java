@@ -21,7 +21,8 @@ import java.util.stream.Collectors;
                 value = "/\n"+
                         "/loginForm.jsp\n" +
                         "/login\n" +
-                        "/userRegister.jsp"
+                        "/userRegister.jsp\n" +
+                        "/error.jsp"
         )
 })
 public class LoginCheckFilter implements Filter {
@@ -58,6 +59,7 @@ public class LoginCheckFilter implements Filter {
             if (excludeUrls.contains(((HttpServletRequest) request).getRequestURI())) {
                 chain.doFilter(request, response);
             } else {
+                log.info(""+((HttpServletRequest) request).getRequestURI());
                 ((HttpServletResponse) response).sendRedirect("/loginForm.jsp");
             }
         } else {

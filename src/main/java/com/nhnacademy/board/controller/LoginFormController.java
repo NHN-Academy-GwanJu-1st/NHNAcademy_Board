@@ -21,9 +21,9 @@ public class LoginFormController implements Command {
         }
 
         if (!loginCheck) {
-            return "/loginForm.jsp";
+            return "redirect:/loginForm.jsp";
         } else {
-            return "/index.jsp";
+            return "redirect:/";
         }
     }
 }

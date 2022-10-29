@@ -7,20 +7,8 @@
 </head>
 <body>
 
-<%--<c:import url="localeInclude.jsp"></c:import>--%>
 
 <%@ include file="localeInclude.jsp"%>
-
-<%--<c:if test="${sessionScope.locale == null}">--%>
-<%--    <fmt:setLocale value="en"></fmt:setLocale>--%>
-<%--    <fmt:setBundle basename="message" var="message"></fmt:setBundle>--%>
-<%--</c:if>--%>
-
-<%--<c:if test="${sessionScope.locale != null}">--%>
-<%--    <fmt:setLocale value="${sessionScope.locale}"></fmt:setLocale>--%>
-<%--    <fmt:setBundle basename="message" var="message"></fmt:setBundle>--%>
-<%--</c:if>--%>
-
 
 <fmt:bundle basename="message">
 
@@ -39,7 +27,7 @@
 
     <br>
 
-    <a href="userRegisterForm.do"><fmt:message key="UserRegister"/></a>
+<%--    <a href="userRegisterForm.do"><fmt:message key="UserRegister"/></a>--%>
 </form>
 
 <br>

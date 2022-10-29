@@ -21,6 +21,6 @@ public class UserRegisterController implements Command {
 
         userRepository.addUser(new UserDTO(id, password, name, profile));
 
-        return "redirect:/loginForm.do";
+        return "redirect:/admin.do";
     }
 }

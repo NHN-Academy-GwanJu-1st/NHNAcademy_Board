@@ -18,6 +18,10 @@
 
 <br>
 <br>
+
+    <a href="userRegisterForm.do"><fmt:message key="UserRegister"/></a>
+
+    <br>
 <br>
 
 <h2><fmt:message key="User.List"/></h2>
