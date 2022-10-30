@@ -30,7 +30,6 @@ public class LoginController implements Command {
             /* admin은 관리자 페이지로 리다이렉트*/
             return "redirect:/admin.do";
 
-            /* 그러면 여기가 repository에서 findUser해서 존재하는지 확인하고 id pw 확인 후 로그인 */
         } else if ((user = userRepository.findUser(id)) != null) {
             if (user.getPassword().equals(password)) {
                 HttpSession session = req.getSession();

@@ -3,6 +3,7 @@ package com.nhnacademy.board.controller;
 import com.nhnacademy.board.domain.UserDTO;
 import com.nhnacademy.board.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 @Slf4j
+@Component
 public class AdminUserDeleteController implements Command {
     @Override
     public String excute(HttpServletRequest req, HttpServletResponse res) {

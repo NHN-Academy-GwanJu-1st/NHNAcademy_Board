@@ -1,6 +1,7 @@
 package com.nhnacademy.board.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ import java.io.IOException;
 )
 @Slf4j
 @WebServlet(name = "frontController", urlPatterns = "*.do")
+@Component
 public class FrontController extends HttpServlet {
     private static final String REDIRECT_PREFIX = "redirect:";
 

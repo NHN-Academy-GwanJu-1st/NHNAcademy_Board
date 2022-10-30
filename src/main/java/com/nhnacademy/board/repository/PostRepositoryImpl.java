@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.nhnacademy.board.domain.BoardDTO;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class PostRepositoryImpl implements PostRepository {
 
     Map<Long, BoardDTO> boardMap = new HashMap<>();
@@ -106,14 +108,6 @@ public class PostRepositoryImpl implements PostRepository {
         int totalCount = this.getTotalCount();
 
        return new Pagination(list, page, size, totalCount);
-
-        /* Pagination 객체에 리스트를 념겨줘서 거기서 skip 이런까지 다 계산해서 다시 리스트를 념겨준다? */
-
-        /* 만약 현재 페이지가 2페이지면 11 번부터 20 번까지 보내줘야 됨 */
-
-
-
-        /* 여기서 페이지 객체를 넘겨주라는 거보니까 여기서 뭐 10개씩 뽑아서 넘겨주는 방식? */
 
     }
 }

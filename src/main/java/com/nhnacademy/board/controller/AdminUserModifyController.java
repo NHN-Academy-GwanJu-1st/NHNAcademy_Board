@@ -2,6 +2,7 @@ package com.nhnacademy.board.controller;
 
 import com.nhnacademy.board.domain.UserDTO;
 import com.nhnacademy.board.repository.UserRepository;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
-
+@Component
 public class AdminUserModifyController implements Command{
 
     @Override

@@ -4,12 +4,14 @@ import com.nhnacademy.board.domain.BoardDTO;
 import com.nhnacademy.board.repository.Page;
 import com.nhnacademy.board.repository.PostRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
 
 @Slf4j
+@Component
 public class BoardInitController implements Command {
     @Override
     public String excute(HttpServletRequest req, HttpServletResponse res) {

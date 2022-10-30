@@ -1,6 +1,7 @@
 package com.nhnacademy.board.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 @Slf4j
+@Component
 public class ImageController implements Command {
 
     private static String IMAGE_PATH = System.getProperty("user.dir") + "/images";

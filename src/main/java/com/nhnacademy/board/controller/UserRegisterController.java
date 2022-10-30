@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.nhnacademy.board.domain.UserDTO;
 import com.nhnacademy.board.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.nio.file.Paths;
 
 @Slf4j
+@Component
 public class UserRegisterController implements Command {
 
     private static String IMAGE_DIR = System.getProperty("user.dir")+"/images";

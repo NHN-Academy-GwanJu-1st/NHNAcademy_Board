@@ -1,6 +1,7 @@
 package com.nhnacademy.board.controller;
 
 import com.nhnacademy.board.repository.PostRepository;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
 
+@Component
 public class BoardDeleteController implements Command {
     @Override
     public String excute(HttpServletRequest req, HttpServletResponse res) {

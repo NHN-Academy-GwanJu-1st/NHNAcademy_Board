@@ -13,6 +13,8 @@ import com.nhnacademy.board.repository.PostRepositoryImpl;
 import com.nhnacademy.board.repository.UserRepository;
 import com.nhnacademy.board.repository.UserRepositoryImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -37,9 +39,10 @@ public class WebAppListener implements ServletContextListener {
         log.info("WebAppListener");
 
         ServletContext servletContext = sce.getServletContext();
-
+        UserRepository userRepository = (UserRepository) servletContext.getAttribute("userRepository");
+        PostRepository postRepository = (PostRepository) servletContext.getAttribute("postRepository");
         /* UserRepository */
-        UserRepository userRepository = new UserRepositoryImpl();
+//        UserRepository userRepository = new UserRepositoryImpl();
 
         try {
             readJsonUser(servletContext, userRepository);
@@ -52,7 +55,7 @@ public class WebAppListener implements ServletContextListener {
         servletContext.setAttribute("userRepository", userRepository);
 
         /* BoardRepository */
-        PostRepository postRepository = new PostRepositoryImpl();
+//        PostRepository postRepository = new PostRepositoryImpl();
 
         try {
             readJsonBoard(servletContext, postRepository);

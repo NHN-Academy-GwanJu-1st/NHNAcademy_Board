@@ -2,10 +2,12 @@ package com.nhnacademy.board.controller;
 
 import com.nhnacademy.board.domain.BoardDTO;
 import com.nhnacademy.board.repository.PostRepository;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@Component
 public class BoardModifyFormController implements Command {
     @Override
     public String excute(HttpServletRequest req, HttpServletResponse res) {
