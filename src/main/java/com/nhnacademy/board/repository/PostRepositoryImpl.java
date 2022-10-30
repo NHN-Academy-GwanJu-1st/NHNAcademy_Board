@@ -1,16 +1,34 @@
 package com.nhnacademy.board.repository;
 
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.nhnacademy.board.domain.BoardDTO;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PostRepositoryImpl implements PostRepository {
 
     Map<Long, BoardDTO> boardMap = new HashMap<>();
 
+    List<BoardDTO> list = new ArrayList<>();
+
     @Override
-    public long registerBoard(BoardDTO board) {
+    public long registerBoard(File file, BoardDTO board) {
+
+        list.add(board);
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        try {
+            writer.writeValue(file, list);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         boardMap.put(board.getId(), board);
 
@@ -28,15 +46,45 @@ public class PostRepositoryImpl implements PostRepository {
     }
 
     @Override
-    public void modifyBoard(long boardId, String title, String content) {
+    public void modifyBoard(File file, long boardId, String title, String content) {
         BoardDTO board = findBoard(boardId);
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == boardId) {
+                list.get(i).setTitle(title);
+                list.get(i).setContent(content);
+            }
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        try {
+            writer.writeValue(file, list);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         board.setTitle(title);
         board.setContent(content);
 
     }
 
     @Override
-    public boolean removeBoard(long boardId) {
+    public boolean removeBoard(File file, long boardId) {
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == boardId) {
+                list.remove(i);
+            }
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+        try {
+            writer.writeValue(file, list);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         boolean removeCheck = false;
 

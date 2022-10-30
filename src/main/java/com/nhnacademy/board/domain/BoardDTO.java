@@ -8,7 +8,6 @@ import java.util.Date;
 public class BoardDTO {
 
     private static int boardCount = 0;
-
     private long id;
     private String title;
     private String content;

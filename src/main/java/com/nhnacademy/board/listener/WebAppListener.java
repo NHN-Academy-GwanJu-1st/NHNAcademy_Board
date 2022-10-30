@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.nhnacademy.board.domain.BoardDTO;
 import com.nhnacademy.board.domain.UserDTO;
 import com.nhnacademy.board.repository.PostRepository;
 import com.nhnacademy.board.repository.PostRepositoryImpl;
@@ -17,6 +18,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -51,6 +53,15 @@ public class WebAppListener implements ServletContextListener {
 
         /* BoardRepository */
         PostRepository postRepository = new PostRepositoryImpl();
+
+        try {
+            readJsonBoard(servletContext, postRepository);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
         servletContext.setAttribute("postRepository", postRepository);
 
     }
@@ -72,6 +83,25 @@ public class WebAppListener implements ServletContextListener {
                     split[3].substring(9, split[3].length() - 1)
             );
             userRepository.addUser(file ,temp);
+        });
+    }
+
+    public static void readJsonBoard(ServletContext servletContext, PostRepository postRepository) throws IOException, URISyntaxException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        URL resource = servletContext.getResource("/WEB-INF/classes/post.json");
+        File file = Paths.get(resource.toURI()).toFile();
+        List list = mapper.readValue(file, List.class);
+
+        list.forEach(value -> {
+            String valueString = value.toString();
+            String[] split = valueString.split(",");
+            BoardDTO temp = new BoardDTO(
+                    split[1].substring(7),
+                    split[2].substring(9),
+                    split[3].substring(8)
+            );
+            postRepository.registerBoard(file ,temp);
         });
     }
 }
