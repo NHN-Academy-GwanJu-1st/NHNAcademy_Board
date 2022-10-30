@@ -35,7 +35,6 @@ public class LoginController implements Command {
             if (user.getPassword().equals(password)) {
                 HttpSession session = req.getSession();
                 session.setAttribute("id", user);
-                userRepository.addUser(user);
 
                 return "redirect:/board.do";
             }

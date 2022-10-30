@@ -2,20 +2,19 @@ package com.nhnacademy.board.repository;
 
 import com.nhnacademy.board.domain.UserDTO;
 
+import java.io.File;
 import java.util.Map;
 
 public interface UserRepository {
 
-    public void addUser(UserDTO user);
+    public void addUser(File file, UserDTO user);
 
     public UserDTO findUser(String id);
 
-    public UserDTO findUserByName(String name);
-
     public Map<String, UserDTO> findAll();
 
-    public boolean deleteUser(String name);
+    public boolean deleteUser(File file,String name);
 
-    public void modifyUser(UserDTO user);
+    public void modifyUser(File file, UserDTO user);
 
 }

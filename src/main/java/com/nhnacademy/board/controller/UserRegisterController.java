@@ -1,15 +1,22 @@
 package com.nhnacademy.board.controller;
 
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.nhnacademy.board.domain.UserDTO;
 import com.nhnacademy.board.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 @Slf4j
 public class UserRegisterController implements Command {
@@ -54,7 +61,22 @@ public class UserRegisterController implements Command {
 
         UserRepository userRepository = (UserRepository) req.getServletContext().getAttribute("userRepository");
 
-        userRepository.addUser(new UserDTO(id, password, name, profile));
+        ServletContext servletContext = req.getServletContext();
+
+        URL resource = null;
+        File file = null;
+
+        try {
+            resource = servletContext.getResource("/WEB-INF/classes/users.json");
+            file = Paths.get(resource.toURI()).toFile();
+
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        userRepository.addUser(file, new UserDTO(id, password, name, profile));
 
         return "redirect:/admin.do";
     }

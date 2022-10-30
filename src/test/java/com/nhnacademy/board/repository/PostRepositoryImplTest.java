@@ -55,7 +55,6 @@ public class PostRepositoryImplTest {
         findBoard.setTitle(modifyTitle);
         findBoard.setContent(modifyContent);
 
-
         Assert.assertEquals(findBoard.getTitle(), modifyTitle);
         Assert.assertEquals(findBoard.getContent(), modifyContent);
 

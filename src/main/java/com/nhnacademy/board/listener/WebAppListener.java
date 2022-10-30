@@ -1,5 +1,11 @@
 package com.nhnacademy.board.listener;
 
+import com.fasterxml.jackson.core.exc.StreamWriteException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.nhnacademy.board.domain.UserDTO;
 import com.nhnacademy.board.repository.PostRepository;
 import com.nhnacademy.board.repository.PostRepositoryImpl;
@@ -11,6 +17,15 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @WebListener
@@ -23,13 +38,40 @@ public class WebAppListener implements ServletContextListener {
 
         /* UserRepository */
         UserRepository userRepository = new UserRepositoryImpl();
-        /* Admin */
-        userRepository.addUser(new UserDTO("admin", "12345", "관리자", ""));
+
+        try {
+            readJsonUser(servletContext, userRepository);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
         servletContext.setAttribute("userRepository", userRepository);
 
         /* BoardRepository */
         PostRepository postRepository = new PostRepositoryImpl();
         servletContext.setAttribute("postRepository", postRepository);
 
+    }
+
+    public static void readJsonUser(ServletContext servletContext, UserRepository userRepository) throws IOException, URISyntaxException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        URL resource = servletContext.getResource("/WEB-INF/classes/users.json");
+        File file = Paths.get(resource.toURI()).toFile();
+        List list = mapper.readValue(file, List.class);
+
+        list.forEach(value -> {
+            String valueString = value.toString();
+            String[] split = valueString.split(",");
+            UserDTO temp = new UserDTO(
+                    split[0].substring(4),
+                    split[1].substring(10),
+                    split[2].substring(6),
+                    split[3].substring(9, split[3].length() - 1)
+            );
+            userRepository.addUser(file ,temp);
+        });
     }
 }

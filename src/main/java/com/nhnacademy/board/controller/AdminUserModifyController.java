@@ -3,8 +3,14 @@ package com.nhnacademy.board.controller;
 import com.nhnacademy.board.domain.UserDTO;
 import com.nhnacademy.board.repository.UserRepository;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 public class AdminUserModifyController implements Command{
 
@@ -17,7 +23,22 @@ public class AdminUserModifyController implements Command{
         String profile = req.getParameter("profile");
 
         UserRepository userRepository = (UserRepository) req.getServletContext().getAttribute("userRepository");
-        userRepository.modifyUser(new UserDTO(id, password, name, profile));
+
+        ServletContext servletContext = req.getServletContext();
+        URL resource = null;
+        File file = null;
+
+        try {
+            resource = servletContext.getResource("/WEB-INF/classes/users.json");
+            file = Paths.get(resource.toURI()).toFile();
+
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        userRepository.modifyUser(file, new UserDTO(id, password, name, profile));
 
         return "redirect:/admin.do";
     }
