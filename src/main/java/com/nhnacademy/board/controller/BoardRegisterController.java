@@ -41,6 +41,6 @@ public class BoardRegisterController implements Command {
 
         postRepository.registerBoard(file, board);
 
-        return "redirect:/board.do";
+        return "redirect:/board.do?page=1&size=10";
     }
 }

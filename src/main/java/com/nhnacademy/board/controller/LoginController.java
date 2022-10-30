@@ -36,7 +36,7 @@ public class LoginController implements Command {
                 HttpSession session = req.getSession();
                 session.setAttribute("id", user);
 
-                return "redirect:/board.do";
+                return "redirect:/board.do?page=1&size=10";
             }
 
         } else {

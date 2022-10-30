@@ -38,18 +38,25 @@
     </thead>
 
     <tbody>
-        <c:forEach var="i" items="${boardMap}">
+        <c:forEach var="board" items="${pagedPosts.getList()}">
             <tr>
-                <td>${i.value.getId()}</td>
+                <td>${board.getId()}</td>
                 <td>
-                    <a href="/board/view.do?id=${i.value.getId()}">${i.value.getTitle()}</a>
+                    <a href="/board/view.do?id=${board.getId()}">${board.getTitle()}</a>
                 </td>
-                <td><fmt:formatDate value="${i.value.getDate()}" pattern="yyyy-MM-dd HH:ss"/></td>
-                <td>${i.value.getViewCount()}</td>
+                <td><fmt:formatDate value="${board.getDate()}" pattern="yyyy-MM-dd HH:ss"/></td>
+                <td>${board.getViewCount()}</td>
             </tr>
         </c:forEach>
     </tbody>
 </table>
+
+    <br>
+    <div style="width: 1000px; text-align: center">
+        <c:forEach begin="1" end="${pagedPosts.getTotalPageCount()}" varStatus="status">
+            <a href="/board.do?page=${status.count}&size=${pagedPosts.getPageSize()}">${status.count}</a>
+        </c:forEach>
+    </div>
 
 <br>
 <br>

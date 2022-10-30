@@ -35,6 +35,6 @@ public class BoardDeleteController implements Command {
 
         postRepository.removeBoard(file, boardId);
 
-        return "redirect:/board.do";
+        return "redirect:/board.do?page=1&size=10";
     }
 }

@@ -4,5 +4,11 @@
     "password" : "12345",
     "name" : "Administrator",
     "profile" : null
+  },
+  {
+    "id": "test",
+    "password": "123",
+    "name": "test",
+    "profile" : "test1_defaultProfile.png"
   }
 ]

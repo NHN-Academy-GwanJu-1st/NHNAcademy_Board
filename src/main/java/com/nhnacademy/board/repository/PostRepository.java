@@ -17,6 +17,10 @@ public interface PostRepository {
 
     public boolean removeBoard(File file,long boardId);
 
+    public int getTotalCount();
+
+    Page<BoardDTO> getPagedPosts(int page, int size);
+
 
 
 }
